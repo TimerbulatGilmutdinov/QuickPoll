@@ -1,5 +1,6 @@
 package ru.itis.quickpoll.controllers;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -55,7 +56,7 @@ public class PollController {
 
 
     @PostMapping("/polls")
-    public ResponseEntity<?> createPoll(@RequestBody Poll poll) {
+    public ResponseEntity<?> createPoll(@Valid @RequestBody Poll poll) {
         poll = pollRepository.save(poll);
 
         HttpHeaders responseHeaders = new HttpHeaders();
